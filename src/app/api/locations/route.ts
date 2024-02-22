@@ -1,8 +1,13 @@
 import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(request: NextRequest) {
+  const searchprams = request.nextUrl.searchParams;
+  const pagenumber = searchprams.get("page");
+  console.log(pagenumber);
   try {
-    const respdata = await fetch("https://rickandmortyapi.com/api/location");
+    const respdata = await fetch(
+      `https://rickandmortyapi.com/api/location?page=${pagenumber}`
+    );
 
     const { results } = await respdata.json();
     if (!results) {

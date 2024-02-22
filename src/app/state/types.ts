@@ -27,6 +27,13 @@ export type Episodes = {
   episode: string;
 };
 
+export type NotesType = {
+  _id: string;
+  notes: string;
+  createdAt: Date;
+  updatedAt: Date;
+};
+
 export enum STATUSENUMS {
   DEAD = "Dead",
   ALIVE = "Alive",

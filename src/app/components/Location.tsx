@@ -15,13 +15,18 @@ const Location = ({ name, type, residents }: Props) => {
       <h2 className=" font-bold uppercase ">
         <span className=" capitalize font-normal "> type:</span> {type}
       </h2>
-      {residents && (
-        <section className="flex gap-5 flex-wrap justify-between  ">
-          {residents.map((item, i) => {
-            return <Residents key={i} url={item} />;
-          })}
-        </section>
-      )}
+      {residents &&
+        (residents.length === 0 ? (
+          <p className="p-3 bg-gray-700 text-white">
+            No residents on this location
+          </p>
+        ) : (
+          <section className="flex gap-5 flex-wrap justify-between  ">
+            {residents.map((item) => {
+              return <Residents key={`${item}${Math.random()} `} url={item} />;
+            })}
+          </section>
+        ))}
     </div>
   );
 };

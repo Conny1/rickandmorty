@@ -1,4 +1,6 @@
 import Episodes from "@/app/components/Episodes";
+import NotesForm from "@/app/components/NotesForm";
+import ResidenNotes from "@/app/components/ResidenNotes";
 import { ResidentsType, STATUSENUMS } from "@/app/state/types";
 import Link from "next/link";
 import React from "react";
@@ -33,19 +35,20 @@ const EachResident = async ({ params }: Props) => {
       <Link className="p-3 hover:text-blue-400 hover:underline" href="/">
         Home
       </Link>
-      <div className=" flex-col  items-center max-w-5xl p-3 ">
+      <div className=" flex-col  items-center w-full max-w-5xl  p-3 ">
         <div className=" flex-1 w-full flex justify-between  gap-3">
-          <div className="w-1/2  ">
+          <div className="w-2/5  ">
             <img
-              className="w-full h-1/2  object-contain rounded-lg  "
+              className="w-fit h-56  object-contain rounded-full  "
               src={resident?.image}
               alt="Residentavator"
               loading="lazy"
             />
             <div>
-              <button className="bg-blue-400 p-2 rounded mt-2">
-                Add notes
-              </button>
+              {/* notes */}
+              <ResidenNotes />
+              {/* add notes form */}
+              <NotesForm residentid={resident.id} />
             </div>
           </div>
           <div className="flex-1">

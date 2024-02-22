@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { ResidentsType, STATUSENUMS } from "../state/types";
 import Link from "next/link";
+import Image from "next/image";
 
 const Residents = ({ url }: { url: string }) => {
   const [resident, setresident] = useState<ResidentsType | undefined>(
@@ -12,7 +13,6 @@ const Residents = ({ url }: { url: string }) => {
         const respdata = await fetch(url);
         const resp = await respdata.json();
 
-        console.log(resp);
         setresident(resp);
       } catch (error) {}
     };
@@ -22,12 +22,18 @@ const Residents = ({ url }: { url: string }) => {
     <Link href={`resident/${resident?.id}`}>
       <div className=" flex-1 max-w-56  min-w-40 ">
         <div className="w-ful">
-          <img
-            className="w-full h-full object-contain  "
-            src={resident?.image}
-            alt="Residentavator"
-            loading="lazy"
-          />
+          {resident?.image ? (
+            <Image
+              width={500}
+              height={600}
+              className="w-full h-full object-contain  "
+              src={resident?.image}
+              alt="Residentavator"
+              loading="lazy"
+            />
+          ) : (
+            <div className="w-full h-full bg-black "></div>
+          )}
         </div>
         <div>
           <p>{resident?.name}</p>
