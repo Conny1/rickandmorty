@@ -12,7 +12,6 @@ type Props = {
 };
 
 const EachResident = async ({ params }: Props) => {
-  //   console.log(params);
   const fetchData = async () => {
     try {
       const respdata = await fetch(
@@ -21,11 +20,14 @@ const EachResident = async ({ params }: Props) => {
       const resp = await respdata.json();
 
       if (resp) {
-        // console.log(resp.results);
         return resp;
+      } else if ("error" in resp) {
+        return null;
       }
+      return;
+    } catch (error) {
       return undefined;
-    } catch (error) {}
+    }
   };
 
   const resident: ResidentsType = await fetchData();
@@ -58,7 +60,7 @@ const EachResident = async ({ params }: Props) => {
             <p className="uppercase">
               {" "}
               <span className="capitalize">location:</span>{" "}
-              {resident.location.name}
+              {resident?.location?.name}
             </p>
             {STATUSENUMS.ALIVE === resident?.status && (
               <p className="bg-green-300 rounded p-1 capitalize ">
@@ -81,16 +83,16 @@ const EachResident = async ({ params }: Props) => {
 
             <p className="uppercase">
               {" "}
-              <span className="capitalize">gender:</span> {resident.gender}
+              <span className="capitalize">gender:</span> {resident?.gender}
             </p>
 
             <p className="uppercase">
               {" "}
-              <span className="capitalize">species:</span> {resident.species}
+              <span className="capitalize">species:</span> {resident?.species}
             </p>
             <p className="text-center font-bold mb-2 ">Episodes</p>
             <section className="flex flex-wrap gap-3 justify-between overflow-scroll h-96 p-3">
-              {resident.episode.map((item, i) => {
+              {resident?.episode.map((item, i) => {
                 return <Episodes key={i} url={item} />;
               })}
             </section>
