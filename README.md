@@ -1,36 +1,43 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Rick & Morty API Challenge Documentation
 
-## Getting Started
+## Project Overview
 
-First, run the development server:
+Build an app using the Rick & Morty API to perform the following functionalities:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- Retrieve a list of locations (name and type), along with the residents of that location and their status.
+- Implement the ability to search or filter location results by location name, character name, or episode name.
+- Display the data in a manner that allows you to view the location, its residents, and see an image of the resident with a representation of their name & status.
+- Tapping on a resident will navigate to a screen with the resident’s details. On this screen, you should be able to open a form that allows you to add persisted notes about the character.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Technologies Used
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- Language: TypeScript
+- Frontend Framework: Next.js
+- CSS Framework: tailwindcss
+- Database/Storage: MongoDB
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Implementation Decisions
 
-## Learn More
+- **Choice of API:** REST API was chosen for its simplicity and ease of integration.
+- **Stack Rationale:** Next.js, TypeScript, tailwindcss, and MongoDB were chosen for their combination of efficiency, developer-friendliness, and scalability. They allow for rapid development while ensuring maintainability and performance.
+- **Persistence:** MongoDB was selected as the database to enable access from anywhere using different machines, unlike localhost. This decision was made to facilitate collaboration and ensure accessibility across different environments.
+- **Optimization Techniques:** Lazy loading was applied on images and pagination was implemented to optimize performance and enhance user experience. This ensures faster loading times and smoother navigation, especially when dealing with large datasets.
+- **Responsive Design:** The site is fully responsive, ensuring compatibility and usability across various devices and screen sizes.
+- **Search Functionality:** Users can search by location name and character name, enhancing the usability and efficiency of the app.
 
-To learn more about Next.js, take a look at the following resources:
+## Design Decisions
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+**Server-Side API Routes:**
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+1. **API Routes for get and search locations Functionality**
+   - The `/api/locations` route was used to fetch locations data and perform searches by location name. This approach reduces the workload of processing large datasets directly from the browser, enhancing performance and scalability.
+2. **API Routes for Search by charactername Functionality:**
+   - The `/api/searchchar` route was implemented for searching data by character name. By offloading the search functionality to the server-side, it reduces the burden on the client-side and provides a more efficient way to retrieve relevant data.
+3. **API Route for Notes Management:**
+   - The `/api/notes` route was utilized for adding, getting, and editing notes stored in the database. This centralized approach simplifies data management and ensures consistency across the application.
+     **client-Side API Routes:** -`/` - CSR page for displaying locations ,residents , search results -`/residents/[id]` - SSR page for displaying resident details
 
-## Deploy on Vercel
+## How to Run
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+-npm install
+-npm run dev

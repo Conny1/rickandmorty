@@ -19,8 +19,11 @@ const Residents = ({ url }: { url: string }) => {
     fetchResident();
   }, []);
   return (
-    <Link href={`resident/${resident?.id}`}>
-      <div className=" flex-1 max-w-56  min-w-40 ">
+    <Link
+      href={`resident/${resident?.id}`}
+      className="flex-1   sm:max-w-56  min-w-40 "
+    >
+      <div className="">
         <div className="w-ful">
           {resident?.image ? (
             <Image
@@ -30,6 +33,9 @@ const Residents = ({ url }: { url: string }) => {
               src={resident?.image}
               alt="Residentavator"
               loading="lazy"
+              placeholder="blur"
+              blurDataURL="/images/lazy.avif"
+              quality={75}
             />
           ) : (
             <div className="w-full h-full bg-black "></div>

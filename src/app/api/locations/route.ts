@@ -3,13 +3,15 @@ import { NextRequest, NextResponse } from "next/server";
 export async function GET(request: NextRequest) {
   const searchprams = request.nextUrl.searchParams;
   const pagenumber = searchprams.get("page");
-  console.log(pagenumber);
+  // enable search by location name
+  const name = searchprams.get("name");
+
   try {
     const respdata = await fetch(
-      `https://rickandmortyapi.com/api/location?page=${pagenumber}`
+      `https://rickandmortyapi.com/api/location?page=${pagenumber}&name=${name}`
     );
 
-    const { results } = await respdata.json();
+    const results = await respdata.json();
     if (!results) {
       return NextResponse.json({ status: 404, message: "not found" });
     }

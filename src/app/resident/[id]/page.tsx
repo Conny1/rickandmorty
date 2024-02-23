@@ -36,10 +36,10 @@ const EachResident = async ({ params }: Props) => {
         Home
       </Link>
       <div className=" flex-col  items-center w-full max-w-5xl  p-3 ">
-        <div className=" flex-1 w-full flex justify-between  gap-3">
-          <div className="w-2/5  ">
+        <div className=" flex-1 w-full flex flex-col sm:flex-row justify-between   gap-3">
+          <div className="sm:w-2/5 w-full  flex flex-wrap justify-between items-center sm:items-start ">
             <img
-              className="w-fit h-56  object-contain rounded-full  "
+              className="w-fit sm:h-56 h-48  object-contain rounded-full  "
               src={resident?.image}
               alt="Residentavator"
               loading="lazy"

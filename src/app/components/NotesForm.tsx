@@ -116,7 +116,7 @@ const NotesForm = ({ residentid }: { residentid: string }) => {
       )}
 
       {modal && (
-        <div className="fixed w-full bg-black h-full top-0 left-0 bg-opacity-80 flex items-center justify-center ">
+        <div className="fixed w-full bg-black h-full top-0 left-0 bg-opacity-80 flex items-center justify-center p-2 ">
           <form className="flex-1 max-w-96 h-96 flex flex-col">
             <button
               onClick={() => setmodal(false)}

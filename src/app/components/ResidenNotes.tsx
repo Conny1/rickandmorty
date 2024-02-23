@@ -8,7 +8,7 @@ const ResidenNotes = () => {
   //   console.log(residentNotes);
 
   return (
-    <div>
+    <div className="flex-1">
       {residentNotes ? (
         <>
           <div>

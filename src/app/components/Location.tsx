@@ -10,7 +10,14 @@ const Location = ({ name, type, residents }: Props) => {
   return (
     <div className="w-full mt-7 ">
       <h1 className="text-2xl font-bold uppercase ">
-        <span className=" capitalize  font-normal ">location:</span> {name}
+        <span
+          className={` capitalize  font-normal  ${
+            name.includes(name) ? "text-green-600" : ""
+          } `}
+        >
+          location:
+        </span>{" "}
+        {name}
       </h1>
       <h2 className=" font-bold uppercase ">
         <span className=" capitalize font-normal "> type:</span> {type}
