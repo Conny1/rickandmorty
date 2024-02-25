@@ -1,4 +1,5 @@
 # Rick & Morty API Challenge Documentation
+#   Link to hosted site:  https://rickandmorty-eight-mu.vercel.app/
 
 ## Project Overview
 
